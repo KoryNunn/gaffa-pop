@@ -10,8 +10,11 @@ Pop.prototype.trigger = function(){
         var popFrom = this.source.value,
             poppedValue = popFrom.pop();
 
-        this.target.binding && this.target.set(poppedValue, this);
-        this.source.set(popFromArray, this);
+        if(this.target.binding){
+            this.target.set(poppedValue, this);
+        }
+
+        this.source.set(popFrom, this);
     }
 };
 Pop.prototype.target = new Gaffa.Property();
